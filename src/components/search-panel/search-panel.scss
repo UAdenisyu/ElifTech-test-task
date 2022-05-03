@@ -1,0 +1,39 @@
+.search-panel-wrapper{
+    padding: 20px 100px;   
+    .search-panel{
+        padding: 20px 20px;    
+        background-color: #a6a6a6;
+        text-align: center;
+        border-radius: 4px;
+        box-shadow: -10px 5px 10px rgba(0,0,0, .4);
+        border: 2px solid rgba(0,0,0, .2);
+        div{
+            background-color: #a6a6a6;
+        }
+        .search-button{
+            width: 100%;
+        }
+    }
+    .filter-buttons-group{
+        margin-top: 50px;
+        button{
+            padding: 10px;
+        }
+        .first-group{
+            margin-right: 100px;
+            button{
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+        }
+        .last-group{
+            text-align: right;
+
+            button{
+                margin-top: 30px;
+                width: 250px;
+            }
+        }
+
+    }
+}

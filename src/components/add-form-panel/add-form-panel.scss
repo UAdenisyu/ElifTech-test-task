@@ -1,0 +1,28 @@
+.add-form-wrapper{  
+    margin: 50px auto;
+    justify-content: space-between;
+    .input-area{
+        border-radius: 4px;
+        box-shadow: -10px 10px 20px rgba(0,0,0, .4);
+        background-color: #b7cbd0;
+        div{
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #b7cbd0;
+        }
+
+    }
+    .btn-add-bank{
+        display: flex;
+        background-color: #81afc6;
+        align-items: center;
+        button{
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 20px;
+            // height: 100%;
+            text-align: center;
+            width: 100%; 
+        }
+    }
+}

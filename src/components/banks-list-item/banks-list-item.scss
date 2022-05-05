@@ -16,11 +16,18 @@
         margin-bottom: 10px;
         padding: 0;
         border-left: 3px solid;
+        input{
+            max-width: 80%;
+            text-align: center;
+            background-color: #c6dae8;
+        }
     }
 
     div:first-child{
         border: none;
     }
+    
+
 
     .interest-rate{
 
@@ -42,19 +49,28 @@
         button {
             width: 35px;
             height: 35px;
-            margin: auto 20px;
+            margin: auto 10px;
             font-size: 17px;
             border: none;
             cursor: pointer;
         }
         
         .btn-cookie {
-            color: #e09f3e;
+            color: rgb(49, 2, 177);
         }
         
         .btn-trash {
             color: #e5383b;
         }
+        .btn-edit {
+            color: #3eac1d;
+        }
+        .btn-edit-active {
+            color: rgb(192, 192, 53);
+        }
     }
     
+}
+.marked{
+    color: rgb(49, 2, 177);
 }

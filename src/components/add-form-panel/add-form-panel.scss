@@ -10,6 +10,13 @@
             padding-bottom: 20px;
             background-color: #b7cbd0;
         }
+        input:valid {
+            border-color: green;
+        }
+          
+        input:invalid {
+            border-color: red;
+        }
 
     }
     .btn-add-bank{
@@ -17,10 +24,13 @@
         background-color: #81afc6;
         align-items: center;
         button{
+            background-color: #3b7bcb;
+            color: #fff;
+            box-shadow: -10px 10px 20px rgba(0,0,0, .4);
             padding: 15px;
             border-radius: 10px;
+            border: none;
             font-size: 20px;
-            // height: 100%;
             text-align: center;
             width: 100%; 
         }

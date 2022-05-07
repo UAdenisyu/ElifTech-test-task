@@ -1,0 +1,43 @@
+.calcWrap {
+    position: relative;
+    width: 100%;
+    top: 100px;
+    margin: auto;
+    padding: auto;
+    text-align: center;
+    
+    .paramField {
+        // position: static;
+        margin-top: 20px;
+        p {
+            font-size: 20px;
+            padding: 10px 0;
+            background-color: #fff;
+        }
+        input{
+            padding: 10px 0;  
+            font-size: 20px;
+        }
+    }
+    
+    .resultField{
+        position: relative;
+        top: 150px;
+        .topic {
+            padding: 10px 0;
+            margin: 0 auto;
+            font-size:50px;
+            // color: #fff;
+        }
+        .value {
+            position: inherit; 
+            top: 15px;
+            font-size: 30px;
+            background-color: #fff;
+            width: 200px;
+            padding: 10px 0;
+            margin: 0 auto;
+        }
+    }
+    
+}

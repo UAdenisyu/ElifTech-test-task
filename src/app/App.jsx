@@ -1,10 +1,11 @@
-import './App.css';
+import './App.scss';
 import {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AppInfo from '../components/app-info/app-info';
 import SearchPanel from '../components/search-panel/search-panel';
 import BanksList from '../components/banks-list/banks-list';
 import AddFormPanel from '../components/add-form-panel/add-form-panel';
+import CalcPage from '../components/calculator-page/calculator-page';
 import { v4 as uuid } from 'uuid';
 
 
@@ -14,15 +15,16 @@ class App extends Component {
         super(props);
         this.state = {
             banks: [
-                {name: 'Bank 1', interestRate: 15, maxLoan: 1000000, minDownPay: 20000, loanTerm: 20, marked: true, id: uuid(), editMode: true},
+                {name: 'Bank 1', interestRate: 15, maxLoan: 1000000, minDownPay: 20000, loanTerm: 20, marked: false, id: uuid(), editMode: false},
                 {name: 'Bank 2', interestRate: 10, maxLoan: 2500000, minDownPay: 50000, loanTerm: 30, marked: false, id: uuid(), editMode: false},
-                {name: 'Bank 7', interestRate: 7, maxLoan: 700000, minDownPay: 15000, loanTerm: 25, marked: true, id: uuid(), editMode: false},
+                {name: 'Bank 7', interestRate: 7, maxLoan: 700000, minDownPay: 15000, loanTerm: 25, marked: false, id: uuid(), editMode: false},
                 {name: 'Bank 4', interestRate: 12, maxLoan: 100000, minDownPay: 20000, loanTerm: 10, marked: false, id: uuid(), editMode: false},
                 {name: 'Bank 5', interestRate: 14, maxLoan: 500000, minDownPay: 10000, loanTerm: 15, marked: false, id: uuid(), editMode: false}
             ],
             filterType: "",
             currentSearchInput: '',
             showOnlyMarked: false,
+            currentPageHref: '/main'
         }
     }
 
@@ -181,28 +183,62 @@ class App extends Component {
 
     }
 
+    setPage(e) {
+        e.preventDefault();
+        let page = e.target.pathname;
+        this.setState ({ currentPageHref: page})
+    }
+
+    renderPage() {
+        if (this.state.currentPageHref === '/main'){
+            const visibleData = this.filterBanks(this.sortBanks(this.searchBank(this.state.banks, this.state.currentSearchInput), this.state.filterType));
+            return (
+                <>
+                    <AppInfo
+                        amount={this.state.banks.length}
+                        marked={this.state.banks.filter(bank => bank.marked === true).length}/>
+                    <SearchPanel 
+                        filterType={this.state.filterType}
+                        onFilter={this.onFilter}
+                        onSearch={this.updateSearch}
+                        toggleShowOnlyMarked={this.toggleShowOnlyMarked}/>
+                    <BanksList 
+                        data={visibleData}
+                        onDelete={this.deleteBank}
+                        onMarked={this.markBank}
+                        toggleEditMode={this.toggleEditMode}
+                        onEdit={this.onEditBankField}/>
+                    <AddFormPanel
+                        onAdd={this.addBank}/>
+                </>
+            )
+        }
+        else if(this.state.currentPageHref === '/calc'){
+            return <CalcPage data={this.state.banks}/>
+        }
+        else {
+            return null;
+        }
+    }
+
     render(){
 
-        const visibleData = this.filterBanks(this.sortBanks(this.searchBank(this.state.banks, this.state.currentSearchInput), this.state.filterType));
-
+        
         return (
             <>  
-                <AppInfo
-                    amount={this.state.banks.length}
-                    marked={this.state.banks.filter(bank => bank.marked === true).length}/>
-                <SearchPanel 
-                    filterType={this.state.filterType}
-                    onFilter={this.onFilter}
-                    onSearch={this.updateSearch}
-                    toggleShowOnlyMarked={this.toggleShowOnlyMarked}/>
-                <BanksList 
-                    data={visibleData}
-                    onDelete={this.deleteBank}
-                    onMarked={this.markBank}
-                    toggleEditMode={this.toggleEditMode}
-                    onEdit={this.onEditBankField}/>
-                <AddFormPanel
-                    onAdd={this.addBank}/>
+                <section className="nav-bar text-end pt-5 pb-5">
+                    <a 
+                        href="main"
+                        onClick={e => this.setPage(e)}>
+                            Banks list page
+                    </a>
+                    <a 
+                        href="calc"
+                        onClick={e => this.setPage(e)}>
+                            Calculator page
+                    </a>
+                </section>
+                {this.renderPage()}
             </>
         );
     }

@@ -31,3 +31,18 @@ div {
 .App{
     text-align: center;
 }
+
+.nav-bar{
+    background-color: #0f6197;
+    padding-right: 400px;
+    box-shadow: inset rgba(#0f6197,.8) 0 130px 20px, inset #000 0 0 100px;
+    a{
+        text-decoration: underline;
+        color: #000000;
+        padding: 0 25px;
+        font-size: 30px;
+    }
+    a:hover{
+        color: #fff;
+    }
+}
